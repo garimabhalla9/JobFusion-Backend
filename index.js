@@ -69,9 +69,13 @@ app.use(cookieParser());
 const corsOptions = {
   origin: [
     'http://localhost:5173',                          // Local frontend
-    'http://job-fusion-frontend-witc.vercel.app'          // ✅ Replace with actual deployed frontend URL
+    'https://job-fusion-frontend-witc.vercel.app',    // Vercel deployed frontend
+    'http://job-fusion-frontend-witc.vercel.app'      // HTTP version just in case
   ],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
+  exposedHeaders: ['set-cookie']
 };
 
 app.use(cors(corsOptions));
